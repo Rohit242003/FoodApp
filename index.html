@@ -1,0 +1,82 @@
+<html>
+
+<head>
+<style>
+	*{background-color:lightyellow;font-size:40px;}
+	input[type=radio] {
+   	 	border: 3px;
+   	 	width: 2%;
+   	 	height: 0.75em;
+			}
+</style>
+<title>Food app</title>
+	<script>
+	function show()
+	{
+		event.preventDefault();
+		let name = document.getElementById("name");
+		let msg = document.getElementById("msg");
+		if (name.value=="")
+		{
+			alert("please enter name");
+			
+			msg.innerHTML ="";
+			name.focus();
+			
+		}
+		else if (name.value.trim().length==0)
+		
+		{
+			alert("name cannot by blank");
+			msg.innerHTML = "";
+			name.value="";
+			name.focus();
+
+			
+		}
+		else if (!name.value.match("^[A-Za-z]+$"))
+		
+		{
+			alert("name should contain only albhabets");
+			msg.innerHTML = "";
+			name.value="";
+			name.focus();
+
+			
+		}
+		else  
+		
+		{
+			let NI = document.getElementById("NI");
+			let SI = document.getElementById("SI");
+			let FF = document.getElementById("FF");
+			let choice="";
+			if(NI.checked) choice="North Indian";
+			else if(SI.checked) choice="South Indian";
+			else if(FF.checked) choice="Fast Food";
+			let m = "Name " + name.value + " choice is "+choice;
+			msg.innerHTML = m;
+			
+			
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<center>
+	<h1> Food app</h1>
+	<form onsubmit="show()"/>
+	<input type="text" placeholder="Please Enter your name" id="name"/>
+	<br><br>
+	<input type="radio" name="f" id="NI"/>North Indian
+	<input type="radio" name="f" id="SI"/> South Indian
+	<input type="radio" name="f" id="FF"/> Fast Food
+	<br><br>
+	<input type="submit"value="submit" />
+
+	</form>
+	<h2 id="msg" />
+</body>
+	</center>
+<html>
